@@ -1,32 +1,39 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="wrapper">
+    <Slidebar></Slidebar>
+    <div class="content">
+      <Header></Header>
+      <Main></Main>
     </div>
-    <router-view />
   </div>
 </template>
 
+<script>
+import Header from "@/components/Header.vue";
+import Main from "@/components/Main.vue";
+import Slidebar from "@/components/Slidebar.vue";
+import './style/Commin.css';
+export default {
+  components: { Header, Main, Slidebar },
+
+}
+</script>
+
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+ 
+  .wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid;
+    border-collapse:collapse ;
+  }
+  .content{
+    flex: 1;
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    min-height: 100vh;
+  }
 </style>
