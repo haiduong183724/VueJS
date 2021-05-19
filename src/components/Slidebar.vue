@@ -98,6 +98,7 @@ export default {
   a,.title{
     text-decoration: none;
     text-align: left;
+    color:black;
   }
   .selection{
     display: flex;

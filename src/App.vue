@@ -4,7 +4,9 @@
     <div class="content">
       <Header></Header>
       <Main></Main>
+      
     </div>
+    <Form/>
   </div>
 </template>
 
@@ -12,13 +14,13 @@
 import Header from "@/components/Header.vue";
 import Main from "@/components/Main.vue";
 import Slidebar from "@/components/Slidebar.vue";
+import Form from "@/components/Form.vue"
 import './style/Commin.css';
 export default {
-  components: { Header, Main, Slidebar },
+  components: { Header, Main, Slidebar,Form},
 
 }
 </script>
-
 
 <style>
  

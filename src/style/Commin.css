@@ -27,11 +27,6 @@ td {
     display: flex;
 }
 
-.formBottom.d-flex {
-    height: 40px;
-    justify-content: flex-end;
-}
-
 div.toolbarGrid {
     height: 40px;
     margin: 10px;
@@ -49,10 +44,9 @@ body{
     margin: 0;
     padding: 0;
 }
-
-
-
-
+a:visited{
+    color:black;
+}
 
 .content{
     height: calc(100% - 100px);
@@ -60,11 +54,9 @@ body{
     border-collapse: collapse;
 }
 
-
 .selectedRow{
-    background: #c6c6f7;
+    background: #c6c6f7 !important;
 }
-
 .formDetail{
     position: fixed;
     top: 0;
@@ -72,17 +64,6 @@ body{
     right: 0;
     bottom: 0;
     display: none;
-}
-
-div.formDetail input, div.formDetail select {
-    height: 30px;
-    margin-top: 10px;
-    width: 100%;
-}
-
-div.formDetail select {
-    height: 34px;
-    width: 103%;
 }
 
 .row-item{
@@ -94,21 +75,6 @@ div.formDetail select {
     flex: 1;
 }
 
-.control-right{
-    margin-left: 30px;
-}
-
-.btnForm {
-    border: 1px solid;
-    padding: 10px;
-    width: 40px;
-    margin: 10px;
-    height: 17px;
-    text-align: center;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
 .formWrapp{
     background: #808080cf;
     display: flex;
@@ -116,16 +82,6 @@ div.formDetail select {
     justify-content: center;
     height: 100%;
     width: 100%;
-}
-
-.btnCancel.btnForm {
-    background: #d67a7a;
-    color: white;
-}
-
-.btnSave.btnForm {
-    background: #2929d2;
-    color: white;
 }
 .show{
     display: block;

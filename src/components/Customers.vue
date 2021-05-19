@@ -1,11 +1,23 @@
 .<template>
   <div class="main" id = "employees">
     <div class="main-header">
-      <a href="">
+      <a>
         <span>
           <img src="../assets/icon/add.png" alt="">
         </span>
         Thêm nhân viên
+      </a>
+      <a class= "delete" @click="show()">
+        <span>
+          <img src="../assets/icon/add.png" alt="">
+        </span>
+        Xóa
+      </a>
+      <a class="fix" @click="hidden()">
+        <span>
+          <img src="../assets/icon/add.png" alt="">
+        </span>
+        Sửa
       </a>
       <h2>Danh sách nhân viên</h2>
     </div>
@@ -34,17 +46,17 @@
           <td>Tình trạng công việc</td>
         </thead>
         <tbody>
-          <tr v-for="(nv,index) in employees" :key="nv.EmployeeCode" :class="{'gray-bg':(index%2)}">
-            <td>{{nv.EmployeeCode}}</td>
-            <td>{{nv.FullName}}</td>
-            <td>{{nv.Gender}}</td>
-            <td>{{nv.DateOfBirth}}</td>
-            <td>{{nv.PhoneNumber}}</td>
-            <td>{{nv.Email}}</td>
-            <td>{{nv.PositionName}}</td>
-            <td>{{nv.Department}}</td>
-            <td>{{nv.Salary}}</td>
-            <td>{{nv.WorkStatus}}</td>
+          <tr v-for="(nv,index) in employees" :key="nv.EmployeeCode" :class="{'gray-bg':(index%2), 'row':true, 'selectedRow':index==0}" @click="initSelectedRow(index);" >
+            <td FieldName = "EmployeeCode">{{nv.EmployeeCode}}</td>
+            <td FieldName = "FullName">{{nv.FullName}}</td>
+            <td FieldName = "Gender">{{fomatGender(nv.Gender)}}</td>
+            <td FieldName = "DateOfBirth">{{fomatDate(nv.DateOfBirth)}}</td>
+            <td FieldName = "PhoneNumber">{{nv.PhoneNumber}}</td>
+            <td FieldName = "Email">{{nv.Email}}</td>
+            <td FieldName = "PositionName">{{nv.PositionName}}</td>
+            <td FieldName = "Department">{{nv.Department}}</td>
+            <td FieldName = "Salary">{{nv.Salary}}</td>
+            <td FieldName = "WorkStatus">{{nv.WorkStatus}}</td>
           </tr>
         </tbody>
       </table>
@@ -61,16 +73,50 @@ export default {
       employees:{}
     }
   },
+  methods:{
+    fomatDate(datesrc){
+      let date = new Date(datesrc),
+        year = date.getFullYear().toString(),
+        month = (date.getMonth() + 1).toString().padStart(2, '0'),
+        day = date.getDate().toString().padStart(2, '0');
+    return `${day}/${month}/${year}`;
+    },
+    fomatGender(gd){
+      switch(gd){
+        case 1:
+          return "Nam";
+        case 2:return "Undefined"; 
+        case 0: return "Nữ";
+      }
+    },
+    getData(){
+      swal("waiting",{timer:2000});
+      axios.get("http://cukcuk.manhnv.net/v1/Employees").then(response=>{
+      this.employees = response.data;
+      });
+      document.getElementsByClassName("row")[0].classList.add("selectedRow")
+    },
+    initSelectedRow(index){
+      let item = document.getElementsByClassName("selectedRow");
+      for( var i = 0; i< item.length; i++){
+        item[i].classList.remove("selectedRow");
+      }
+      document.getElementsByClassName("row")[index].classList.add("selectedRow");
+    },
+    show(){
+      document.getElementById("formEmployeeDetail").classList.add("show");
+    },
+    hidden(){
+      document.getElementById("formEmployeeDetail").classList.remove("show");
+    }
+  },
   mounted(){
-    swal("waiting");
     axios.get("http://cukcuk.manhnv.net/v1/Employees").then(response=>{
     this.employees = response.data;
+    swal("waiting",{timer:2000});
     });
   },
 
-  method:{
-
-  }
 }
 </script>
 
@@ -102,6 +148,13 @@ export default {
     display: flex;
     color: white;
     border-radius:5px ;
+    cursor: pointer;
+  }
+  .main-header .delete{
+    background: rgb(187, 31, 31);
+  }
+  .main-header .fix{
+    background: rgb(39, 140, 207);
   }
   span{
     margin-right:10px ;
@@ -113,14 +166,14 @@ export default {
   }
   .field{
     display: flex;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 1px solid;
     position: relative;
     width: 300px;
     max-height: 100%;
     border-radius: 5px;
   }
-  input[type = "text"]{
+  .tool-bar input[type = "text"]{
     border: none;
     width: 100%;
     padding: 0;
@@ -142,7 +195,11 @@ export default {
     border: none;
     height: 40px;
   }
-  .gray-bg{
-    background-color:rgb(224, 240, 240) ;
+  tr:hover{
+    background: rgb(165, 165, 165);
   }
+  .gray-bg{
+    background:rgb(181, 185, 185) ;
+  }
+  
 </style>
