@@ -1,15 +1,10 @@
-.<template>
-  <div>
-      sumary
-  </div>
+.
+<template>
+  <div>sumary</div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

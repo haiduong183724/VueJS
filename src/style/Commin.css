@@ -74,15 +74,6 @@ a:visited{
 .flex-1{
     flex: 1;
 }
-
-.formWrapp{
-    background: #808080cf;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
 .show{
     display: block;
 }

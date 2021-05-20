@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Main from "../components/Main.vue"
+import Main from "../components/Main.vue";
 import report from "../components/report.vue";
 import Product from "../components/Product.vue";
 import Customers from "../components/Customers.vue";
