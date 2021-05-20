@@ -69,7 +69,7 @@
               <div class="field-input">
                 <p>Giới tính</p>
                 <div class="radio">
-                  <input type="radio" id="male" name="gender" value="male" />
+                  <input type="radio" id="male" name="gender" value="male" checked/>
                   <label for="male">Nam</label>
                   <input
                     type="radio"
@@ -92,14 +92,14 @@
               <label for="email">Email</label> <br />
               <input
                 v-model="data.Email"
-                class="big form-input"
+                class="form-input"
                 type="email"
                 name="email"
                 placeholder="example@domain.com"
               />
             </div>
 
-            <div class="field-input smal">
+            <div class="field-input small">
               <label for="phoneNumber"
                 >Số điện thoại <span style="color: red">(*)</span></label
               >
@@ -107,7 +107,7 @@
               <input
                 v-model="data.PhoneNumber"
                 class="form-input"
-                type="number"
+                type="text"
                 name="phoneNumber"
                 required
               />
@@ -117,7 +117,7 @@
           <div class="d-flex">
             <div class="field-input big">
               <label for="companyName">Tên công ty</label> <br />
-              <input class="big form-input" type="text" name="companyName" />
+              <input class="form-input" type="text" name="companyName" />
             </div>
 
             <div class="field-input small">
@@ -235,6 +235,7 @@ export default {
       if (param.mode == "Edit") {
         me.data = param.data;
       }
+      console.log("a");
       me.formMode = param.mode;
       me.show = true;
     });
@@ -348,6 +349,7 @@ label .gender {
   width: 100%;
   height: 40px;
   padding: 5px;
+  border: 1px solid;
 }
 input[type="radio"] {
   height: 25px !important;
@@ -361,9 +363,11 @@ input[type="radio"] {
 #selector {
   height: 40px;
   box-sizing: border-box;
+  border: 1px solid;
   border-radius: 5px;
   margin-top: 10px;
   width: 100%;
+  padding: 5px;
 }
 .big {
   width: 400px;
@@ -375,6 +379,7 @@ input[type="radio"] {
   height: 40px;
   box-sizing: border-box;
   border-radius: 5px;
+  margin-right:10px ;
 }
 .bigger {
   width: 100%;
